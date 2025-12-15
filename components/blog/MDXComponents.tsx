@@ -22,9 +22,14 @@ function H1({ children, id }: HeadingProps) {
 }
 
 function H2({ children, id }: HeadingProps) {
+  // Auto-generate ID if not provided
+  const headingId = id || (typeof children === 'string'
+    ? children.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    : '')
+
   return (
     <h2
-      id={id}
+      id={headingId}
       className="group text-2xl md:text-3xl font-bold mt-12 mb-4 text-gray-900 flex items-center gap-3"
     >
       <span className="w-1 h-8 rounded-full bg-gradient-to-b from-blue-500 to-pink-500 opacity-70" />
@@ -34,9 +39,13 @@ function H2({ children, id }: HeadingProps) {
 }
 
 function H3({ children, id }: HeadingProps) {
+  const headingId = id || (typeof children === 'string'
+    ? children.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    : '')
+
   return (
     <h3
-      id={id}
+      id={headingId}
       className="text-xl md:text-2xl font-semibold mt-8 mb-3 text-gray-800"
     >
       {children}
