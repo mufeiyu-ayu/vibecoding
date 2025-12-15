@@ -17,133 +17,181 @@ export default function Header() {
 
   return (
     <>
-      {/* Ambient background blur */}
-      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/80 via-white/40 to-transparent backdrop-blur-sm z-40 pointer-events-none" />
+      {/* Subtle top gradient atmosphere */}
+      <div className="fixed top-0 left-0 right-0 h-40 bg-gradient-to-b from-blue-50/30 via-pink-50/20 to-transparent pointer-events-none z-30" />
 
-      <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-        <nav className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
-          {/* Logo - with breathing glow effect */}
-          <div className="pointer-events-auto relative group">
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow" />
-            <div className="relative">
-              <Logo />
-            </div>
+      {/* Logo - Floating in top-left */}
+      <div className="fixed top-6 left-6 z-50 pointer-events-auto">
+        <div className="relative group">
+          {/* Glow effect */}
+          <div className="absolute -inset-3 bg-gradient-to-r from-blue-400/20 to-pink-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+          {/* Logo container */}
+          <div className="relative px-4 py-3 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500">
+            <Logo />
           </div>
+        </div>
+      </div>
 
-          {/* Desktop Navigation - Floating pills */}
-          <div className="hidden md:flex items-center gap-3 pointer-events-auto">
+      {/* Floating Island Navigation - Centered */}
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block pointer-events-auto">
+        <div className="relative group">
+          {/* Ambient glow */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/0 via-pink-400/0 to-purple-400/0 group-hover:from-blue-400/20 group-hover:via-pink-400/20 group-hover:to-purple-400/20 rounded-full blur-2xl transition-all duration-1000" />
+
+          {/* Island container */}
+          <div
+            className="relative flex items-center gap-1 px-2 py-2 rounded-full bg-white/70 backdrop-blur-2xl border border-white/50 shadow-xl shadow-black/5"
+            style={{ animation: 'float-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) both' }}
+          >
             {navItems.map((item, index) => {
               const isActive = pathname === item.href
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group relative px-6 py-3 rounded-full transition-all duration-500 hover:scale-105"
+                  className="relative group/item"
                   style={{
-                    animation: `float-in 0.6s ease-out ${index * 0.1}s both`,
+                    animation: `scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08 + 0.3}s both`,
                   }}
                 >
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-pink-400/0 to-purple-400/0 group-hover:from-blue-400/20 group-hover:via-pink-400/20 group-hover:to-purple-400/20 rounded-full blur-xl transition-all duration-500" />
+                  {/* Magnetic hover glow */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover/item:from-blue-400/30 group-hover/item:to-pink-400/30 rounded-full blur-lg transition-all duration-500" />
 
-                  {/* Glass morphism background */}
-                  <div className={`absolute inset-0 rounded-full backdrop-blur-md transition-all duration-500 ${
+                  {/* Nav item pill */}
+                  <div className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-500 ${
                     isActive
-                      ? 'bg-gradient-to-r from-blue-500/90 to-pink-500/90 shadow-lg shadow-blue-500/25'
-                      : 'bg-white/60 group-hover:bg-white/80 border border-gray-200/50 group-hover:border-gray-300/50 shadow-sm group-hover:shadow-md'
-                  }`} />
-
-                  {/* Content */}
-                  <span className={`relative flex items-center gap-2 font-medium text-sm transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-gray-700 group-hover:text-gray-900'
+                      ? 'bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-lg shadow-blue-500/30 scale-105'
+                      : 'hover:bg-white/80 hover:shadow-md hover:scale-105'
                   }`}>
-                    <span className="text-base group-hover:scale-110 transition-transform duration-300">
+                    <span className={`text-lg transition-transform duration-300 group-hover/item:scale-125 ${
+                      isActive ? 'animate-bounce-subtle' : ''
+                    }`}>
                       {item.emoji}
                     </span>
-                    {item.label}
-                  </span>
+                    <span className={`text-sm font-medium transition-colors duration-300 ${
+                      isActive ? 'text-white' : 'text-gray-700 group-hover/item:text-gray-900'
+                    }`}>
+                      {item.label}
+                    </span>
+                  </div>
                 </Link>
               )
             })}
           </div>
+        </div>
+      </div>
 
-          {/* Mobile menu button - Morphing icon */}
-          <button
-            type="button"
-            className="md:hidden pointer-events-auto relative w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center group"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover:from-blue-400/20 group-hover:to-pink-400/20 rounded-full blur-lg transition-all duration-500" />
-            <div className="relative w-5 h-4 flex flex-col justify-between">
-              <span className={`block h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-              }`} />
-              <span className={`block h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                mobileMenuOpen ? 'opacity-0' : ''
-              }`} />
-              <span className={`block h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`} />
-            </div>
-          </button>
-        </nav>
-      </header>
+      {/* Mobile Menu Button - Floating in top-right */}
+      <button
+        type="button"
+        className="md:hidden fixed top-6 right-6 z-50 pointer-events-auto w-14 h-14 rounded-full bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-pink-500/20 transition-all duration-500 flex items-center justify-center group"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        {/* Glow on hover */}
+        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover:from-blue-400/20 group-hover:to-pink-400/20 rounded-full blur-xl transition-all duration-500" />
 
-      {/* Mobile menu - Slide in with blur */}
+        {/* Morphing icon */}
+        <div className="relative w-5 h-4 flex flex-col justify-between">
+          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+            mobileMenuOpen ? 'rotate-45 translate-y-1.5 bg-pink-500' : ''
+          }`} />
+          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+            mobileMenuOpen ? 'opacity-0 scale-0' : ''
+          }`} />
+          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+            mobileMenuOpen ? '-rotate-45 -translate-y-2 bg-pink-500' : ''
+          }`} />
+        </div>
+      </button>
+
+      {/* Mobile Menu - Full screen overlay with centered content */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop with blur */}
+          {/* Gradient backdrop */}
           <div
-            className="fixed inset-0 bg-gradient-to-br from-blue-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-md md:hidden z-40"
+            className="fixed inset-0 bg-gradient-to-br from-blue-50 via-pink-50 to-purple-50 backdrop-blur-2xl md:hidden z-40"
             onClick={() => setMobileMenuOpen(false)}
-            style={{ animation: 'fade-in 0.3s ease-out' }}
+            style={{ animation: 'fade-in 0.4s ease-out' }}
           />
 
-          {/* Menu panel */}
-          <div
-            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm md:hidden z-50 bg-white/95 backdrop-blur-2xl shadow-2xl"
-            style={{ animation: 'slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}
-          >
-            {/* Decorative gradient */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500" />
+          {/* Centered menu content */}
+          <div className="fixed inset-0 md:hidden z-40 flex items-center justify-center p-8">
+            <div
+              className="w-full max-w-sm"
+              style={{ animation: 'scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both' }}
+            >
+              {/* Menu island */}
+              <div className="bg-white/80 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/50 overflow-hidden">
+                {/* Decorative top bar */}
+                <div className="h-2 bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500" />
 
-            <div className="flex flex-col gap-2 p-8 pt-24">
-              {navItems.map((item, index) => {
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`group relative px-6 py-4 rounded-2xl transition-all duration-300 ${
-                      isActive ? 'bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-lg' : 'hover:bg-gray-50'
-                    }`}
-                    style={{
-                      animation: `slide-in-item 0.4s ease-out ${index * 0.1 + 0.1}s both`,
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                        {item.emoji}
-                      </span>
-                      <span className={`text-lg font-medium ${isActive ? 'text-white' : 'text-gray-700 group-hover:text-gray-900'}`}>
-                        {item.label}
-                      </span>
-                    </div>
-                  </Link>
-                )
-              })}
+                {/* Menu items */}
+                <div className="p-6 space-y-2">
+                  {navItems.map((item, index) => {
+                    const isActive = pathname === item.href
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`group flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 ${
+                          isActive
+                            ? 'bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-lg transform scale-105'
+                            : 'hover:bg-gray-50 active:scale-95'
+                        }`}
+                        style={{
+                          animation: `slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1 + 0.2}s both`,
+                        }}
+                      >
+                        <span className={`text-3xl transition-transform duration-300 group-hover:scale-125 ${
+                          isActive ? 'animate-bounce-subtle' : ''
+                        }`}>
+                          {item.emoji}
+                        </span>
+                        <span className={`text-lg font-semibold ${
+                          isActive ? 'text-white' : 'text-gray-800 group-hover:text-gray-900'
+                        }`}>
+                          {item.label}
+                        </span>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </>
       )}
 
       <style jsx>{`
-        @keyframes float-in {
+        @keyframes float-down {
           from {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateX(-50%) translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+          }
+        }
+
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slide-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -160,37 +208,17 @@ export default function Header() {
           }
         }
 
-        @keyframes slide-in-right {
-          from {
-            transform: translateX(100%);
-          }
-          to {
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes slide-in-item {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes pulse-slow {
+        @keyframes bounce-subtle {
           0%, 100% {
-            opacity: 0.6;
+            transform: translateY(0);
           }
           50% {
-            opacity: 1;
+            transform: translateY(-3px);
           }
         }
 
-        .animate-pulse-slow {
-          animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        .animate-bounce-subtle {
+          animation: bounce-subtle 2s ease-in-out infinite;
         }
       `}</style>
     </>
