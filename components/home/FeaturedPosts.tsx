@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { allPosts } from 'contentlayer/generated'
 import Card from '@/components/ui/Card'
