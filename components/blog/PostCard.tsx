@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { Post } from 'contentlayer/generated'
-import Card from '@/components/ui/Card'
 import { formatDate } from '@/lib/utils'
 
 interface PostCardProps {
@@ -96,7 +95,7 @@ export default function PostCard({ post, featured = false, index = 0 }: PostCard
 
           {/* Read more */}
           <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:text-pink-600 transition-colors duration-300">
-            <span>阅读全文</span>
+            <span>Read More</span>
             <svg
               className="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300"
               fill="none"

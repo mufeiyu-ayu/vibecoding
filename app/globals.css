@@ -2,6 +2,10 @@
 
 @layer base {
   :root {
+    /* Font tokens */
+    --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-mono), ui-monospace, monospace;
+
     /* Color tokens */
     --gradient-from: #3b82f6;
     --gradient-to: #ec4899;
@@ -21,6 +25,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     background: white;
     color: rgb(31 41 55);
     font-feature-settings: 'rlig' 1, 'calt' 1;
@@ -28,8 +33,14 @@
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
     font-weight: 600;
     color: rgb(31 41 55);
+  }
+
+  /* Monospace for code */
+  code, pre, kbd {
+    font-family: var(--font-mono);
   }
 
   /* Smooth scrolling */

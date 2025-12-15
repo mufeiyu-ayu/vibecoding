@@ -50,8 +50,7 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-in-up-delay-2">
-          探索技术边界，分享创作旅程
-          <span className="block mt-2 text-base text-gray-500">Exploring tech frontiers, sharing the creative journey</span>
+          Exploring tech frontiers, sharing the creative journey
         </p>
 
         {/* CTA Buttons */}
@@ -59,13 +58,13 @@ export default function Hero() {
           <Link href="/blog">
             <Button variant="primary" size="lg" className="min-w-[180px] shadow-2xl shadow-blue-500/25 hover:shadow-pink-500/25">
               <span className="mr-2">✍️</span>
-              阅读博客
+              Read Blog
             </Button>
           </Link>
           <Link href="/projects">
             <Button variant="secondary" size="lg" className="min-w-[180px]">
               <span className="mr-2">🚀</span>
-              查看作品
+              View Projects
             </Button>
           </Link>
         </div>
@@ -73,7 +72,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-delay-4">
           <div className="flex flex-col items-center gap-2 text-gray-400">
-            <span className="text-sm font-medium">向下滚动</span>
+            <span className="text-sm font-medium">Scroll Down</span>
             <div className="w-6 h-10 rounded-full border-2 border-gray-300 flex items-start justify-center p-2">
               <div className="w-1.5 h-3 rounded-full bg-gray-400 animate-scroll-indicator" />
             </div>

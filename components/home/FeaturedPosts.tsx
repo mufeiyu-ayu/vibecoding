@@ -27,10 +27,10 @@ export default function FeaturedPosts() {
           </span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-          最新文章
+          Latest Posts
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          探索技术、生活与创作的点点滴滴
+          Exploring tech, life, and creative endeavors
         </p>
       </div>
 
@@ -115,7 +115,7 @@ export default function FeaturedPosts() {
 
                   {/* Read more indicator */}
                   <div className="mt-4 flex items-center text-sm font-semibold text-blue-600 group-hover:text-pink-600 transition-colors duration-300">
-                    <span>阅读全文</span>
+                    <span>Read More</span>
                     <svg
                       className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -142,7 +142,7 @@ export default function FeaturedPosts() {
         <Link href="/blog">
           <Button variant="secondary" size="lg" className="min-w-[200px] group">
             <span className="mr-2">📚</span>
-            查看所有文章
+            View All Posts
             <svg
               className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
               fill="none"

@@ -48,7 +48,12 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace('posts/', ''),
+      resolve: (doc) => {
+        // Get just the filename without extension for cleaner URLs
+        const path = doc._raw.flattenedPath.replace('posts/', '')
+        const segments = path.split('/')
+        return segments[segments.length - 1]
+      },
     },
     readingTime: {
       type: 'string',
@@ -56,7 +61,11 @@ export const Post = defineDocumentType(() => ({
     },
     url: {
       type: 'string',
-      resolve: (doc) => `/blog/${doc._raw.flattenedPath.replace('posts/', '')}`,
+      resolve: (doc) => {
+        const path = doc._raw.flattenedPath.replace('posts/', '')
+        const segments = path.split('/')
+        return `/blog/${segments[segments.length - 1]}`
+      },
     },
   },
 }))

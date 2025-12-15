@@ -5,10 +5,10 @@ import { allPosts } from 'contentlayer/generated'
 import PostCard from '@/components/blog/PostCard'
 
 const categories = [
-  { id: 'all', label: '全部', emoji: '📚' },
-  { id: 'tech', label: '技术', emoji: '⚡' },
-  { id: 'life', label: '生活', emoji: '🌸' },
-  { id: 'work', label: '作品', emoji: '🎨' },
+  { id: 'all', label: 'All', emoji: '📚' },
+  { id: 'tech', label: 'Tech', emoji: '⚡' },
+  { id: 'life', label: 'Life', emoji: '🌸' },
+  { id: 'work', label: 'Work', emoji: '🎨' },
 ]
 
 export default function BlogPage() {
@@ -53,13 +53,13 @@ export default function BlogPage() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent"
               style={{ animation: 'fade-in-up 0.8s ease-out 0.1s both' }}
             >
-              博客文章
+              Blog Archive
             </h1>
             <p
               className="text-xl text-gray-600 max-w-2xl mx-auto"
               style={{ animation: 'fade-in-up 0.8s ease-out 0.2s both' }}
             >
-              探索技术深度、分享生活感悟、记录创作历程
+              Exploring tech depth, sharing life insights, documenting the creative journey
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export default function BlogPage() {
                 </span>
                 <input
                   type="text"
-                  placeholder="搜索文章标题、内容或标签..."
+                  placeholder="Search posts by title, content, or tags..."
                   className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300 text-gray-700 placeholder-gray-400"
                   disabled
                 />
@@ -142,8 +142,8 @@ export default function BlogPage() {
           {posts.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">📭</div>
-              <p className="text-xl text-gray-500">这个分类还没有文章</p>
-              <p className="text-gray-400 mt-2">敬请期待更多内容...</p>
+              <p className="text-xl text-gray-500">No posts in this category yet</p>
+              <p className="text-gray-400 mt-2">Stay tuned for more content...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
