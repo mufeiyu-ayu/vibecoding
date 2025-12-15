@@ -20,20 +20,7 @@ export default function Header() {
       {/* Subtle top gradient atmosphere */}
       <div className="fixed top-0 left-0 right-0 h-40 bg-gradient-to-b from-blue-50/30 via-pink-50/20 to-transparent pointer-events-none z-30" />
 
-      {/* Logo - Floating in top-left */}
-      <div className="fixed top-6 left-6 z-50 pointer-events-auto">
-        <div className="relative group">
-          {/* Glow effect */}
-          <div className="absolute -inset-3 bg-gradient-to-r from-blue-400/20 to-pink-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-
-          {/* Logo container */}
-          <div className="relative px-4 py-3 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500">
-            <Logo />
-          </div>
-        </div>
-      </div>
-
-      {/* Floating Island Navigation - Centered */}
+      {/* Unified Floating Island - Logo + Navigation */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block pointer-events-auto">
         <div className="relative group">
           {/* Ambient glow */}
@@ -41,70 +28,97 @@ export default function Header() {
 
           {/* Island container */}
           <div
-            className="relative flex items-center gap-1 px-2 py-2 rounded-full bg-white/70 backdrop-blur-2xl border border-white/50 shadow-xl shadow-black/5"
+            className="relative flex items-center gap-6 px-6 py-3 rounded-full bg-white/70 backdrop-blur-2xl border border-white/50 shadow-xl shadow-black/5"
             style={{ animation: 'float-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) both' }}
           >
-            {navItems.map((item, index) => {
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="relative group/item"
-                  style={{
-                    animation: `scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08 + 0.3}s both`,
-                  }}
-                >
-                  {/* Magnetic hover glow */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover/item:from-blue-400/30 group-hover/item:to-pink-400/30 rounded-full blur-lg transition-all duration-500" />
+            {/* Logo section */}
+            <div
+              className="relative"
+              style={{ animation: 'scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both' }}
+            >
+              <Logo />
+            </div>
 
-                  {/* Nav item pill */}
-                  <div className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-500 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-lg shadow-blue-500/30 scale-105'
-                      : 'hover:bg-white/80 hover:shadow-md hover:scale-105'
-                  }`}>
-                    <span className={`text-lg transition-transform duration-300 group-hover/item:scale-125 ${
-                      isActive ? 'animate-bounce-subtle' : ''
+            {/* Divider */}
+            <div className="h-8 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent" />
+
+            {/* Navigation items */}
+            <div className="flex items-center gap-1">
+              {navItems.map((item, index) => {
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="relative group/item"
+                    style={{
+                      animation: `scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08 + 0.3}s both`,
+                    }}
+                  >
+                    {/* Magnetic hover glow */}
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover/item:from-blue-400/30 group-hover/item:to-pink-400/30 rounded-full blur-lg transition-all duration-500" />
+
+                    {/* Nav item pill */}
+                    <div className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-500 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-lg shadow-blue-500/30 scale-105'
+                        : 'hover:bg-white/80 hover:shadow-md hover:scale-105'
                     }`}>
-                      {item.emoji}
-                    </span>
-                    <span className={`text-sm font-medium transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-gray-700 group-hover/item:text-gray-900'
-                    }`}>
-                      {item.label}
-                    </span>
-                  </div>
-                </Link>
-              )
-            })}
+                      <span className={`text-lg transition-transform duration-300 group-hover/item:scale-125 ${
+                        isActive ? 'animate-bounce-subtle' : ''
+                      }`}>
+                        {item.emoji}
+                      </span>
+                      <span className={`text-sm font-medium transition-colors duration-300 ${
+                        isActive ? 'text-white' : 'text-gray-700 group-hover/item:text-gray-900'
+                      }`}>
+                        {item.label}
+                      </span>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Button - Floating in top-right */}
-      <button
-        type="button"
-        className="md:hidden fixed top-6 right-6 z-50 pointer-events-auto w-14 h-14 rounded-full bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-pink-500/20 transition-all duration-500 flex items-center justify-center group"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label="Toggle menu"
-      >
-        {/* Glow on hover */}
-        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover:from-blue-400/20 group-hover:to-pink-400/20 rounded-full blur-xl transition-all duration-500" />
+      {/* Mobile: Compact floating bar with logo and menu button */}
+      <div className="md:hidden fixed top-6 left-6 right-6 z-50 pointer-events-auto">
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/10 to-pink-400/10 rounded-2xl blur-xl" />
 
-        {/* Morphing icon */}
-        <div className="relative w-5 h-4 flex flex-col justify-between">
-          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
-            mobileMenuOpen ? 'rotate-45 translate-y-1.5 bg-pink-500' : ''
-          }`} />
-          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
-            mobileMenuOpen ? 'opacity-0 scale-0' : ''
-          }`} />
-          <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
-            mobileMenuOpen ? '-rotate-45 -translate-y-2 bg-pink-500' : ''
-          }`} />
+          {/* Mobile bar */}
+          <div className="relative flex items-center justify-between px-5 py-3 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg shadow-black/5">
+            <Logo />
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              className="relative w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center group"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {/* Glow on hover */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/0 to-pink-400/0 group-hover:from-blue-400/20 group-hover:to-pink-400/20 rounded-full blur-lg transition-all duration-500" />
+
+              {/* Morphing icon */}
+              <div className="relative w-4 h-3 flex flex-col justify-between">
+                <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-1 bg-pink-500' : ''
+                }`} />
+                <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+                  mobileMenuOpen ? 'opacity-0 scale-0' : ''
+                }`} />
+                <span className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-1.5 bg-pink-500' : ''
+                }`} />
+              </div>
+            </button>
+          </div>
         </div>
-      </button>
+      </div>
 
       {/* Mobile Menu - Full screen overlay with centered content */}
       {mobileMenuOpen && (
