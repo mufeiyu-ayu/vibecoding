@@ -24,13 +24,13 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold gradient-text mb-2">vibecoding</h3>
             <p className="text-sm text-gray-600">
-              分享技术、生活与创作
+              Sharing tech, life, and creative work
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">导航</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">Navigation</h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">关注</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">Connect</h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
