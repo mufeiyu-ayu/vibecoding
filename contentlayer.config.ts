@@ -70,9 +70,68 @@ export const Post = defineDocumentType(() => ({
   },
 }))
 
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: `projects/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      required: true,
+    },
+    cover: {
+      type: 'string',
+      required: false,
+    },
+    techStack: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    demoUrl: {
+      type: 'string',
+      required: false,
+    },
+    githubUrl: {
+      type: 'string',
+      required: false,
+    },
+    featured: {
+      type: 'boolean',
+      default: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => {
+        const path = doc._raw.flattenedPath.replace('projects/', '')
+        const segments = path.split('/')
+        return segments[segments.length - 1]
+      },
+    },
+    url: {
+      type: 'string',
+      resolve: (doc) => {
+        const path = doc._raw.flattenedPath.replace('projects/', '')
+        const segments = path.split('/')
+        return `/projects/${segments[segments.length - 1]}`
+      },
+    },
+  },
+}))
+
 export default makeSource({
   contentDirPath: './content',
-  documentTypes: [Post],
+  documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [],
     rehypePlugins: [],
