@@ -1,7 +1,11 @@
+import Hero from '@/components/home/Hero'
+import FeaturedPosts from '@/components/home/FeaturedPosts'
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <p className="text-gray-500">Coming soon...</p>
-    </div>
+    <>
+      <Hero />
+      <FeaturedPosts />
+    </>
   )
 }
