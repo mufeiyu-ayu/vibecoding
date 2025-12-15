@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "contentlayer": "^0.3.4",
     "date-fns": "^4.1.0",
     "next": "15.5.9",
@@ -16,7 +17,8 @@
     "react": "19",
     "react-dom": "19",
     "reading-time": "^1.5.0",
-    "shiki": "^3.20.0"
+    "shiki": "^3.20.0",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
