@@ -1,0 +1,73 @@
+---
+title: "使用 Contentlayer 管理 Next.js 博客内容"
+description: "Contentlayer 是一个强大的内容 SDK，它可以将你的 Markdown 或 MDX 文件转换为类型安全的 JSON 数据。"
+date: "2025-12-15"
+category: "tech"
+tags: ["nextjs", "contentlayer", "mdx", "typescript"]
+featured: true
+draft: false
+---
+
+# 为什么选择 Contentlayer
+
+在构建现代博客时，我们需要一个既简单又强大的内容管理方案。Contentlayer 正是这样一个工具。
+
+## 主要优势
+
+1. **类型安全** - 自动生成 TypeScript 类型
+2. **开发体验** - 热更新，即时看到内容变化
+3. **灵活性** - 支持 Markdown 和 MDX
+4. **性能** - 构建时生成，运行时零开销
+
+## 安装和配置
+
+安装 Contentlayer 非常简单：
+
+```bash
+npm install contentlayer next-contentlayer
+```
+
+然后在 `contentlayer.config.ts` 中配置：
+
+```typescript
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
+  filePathPattern: `posts/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+  },
+}))
+
+export default makeSource({
+  contentDirPath: './content',
+  documentTypes: [Post],
+})
+```
+
+## 在页面中使用
+
+使用生成的类型和数据：
+
+```typescript
+import { allPosts } from 'contentlayer/generated'
+
+export default function Blog() {
+  return (
+    <div>
+      {allPosts.map((post) => (
+        <article key={post._id}>
+          <h2>{post.title}</h2>
+        </article>
+      ))}
+    </div>
+  )
+}
+```
+
+## 总结
+
+Contentlayer 让内容管理变得简单而优雅，特别适合静态博客和文档网站。
