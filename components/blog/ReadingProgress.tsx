@@ -81,17 +81,6 @@ export default function ReadingProgress() {
           <div className="absolute inset-0 -z-10 rounded-full bg-white/80 backdrop-blur-md shadow-lg border border-white/50" />
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
-          }
-          50% {
-            box-shadow: 0 0 20px 10px rgba(99, 102, 241, 0);
-          }
-        }
-      `}</style>
     </>
   )
 }

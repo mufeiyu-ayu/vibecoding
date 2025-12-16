@@ -1,8 +1,16 @@
-import type { NextConfig } from "next";
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from 'next-contentlayer'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  outputFileTracingExcludes: {
+    '*': ['**contentlayer**'],
+  },
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+}
 
-export default withContentlayer(nextConfig);
+export default withContentlayer(nextConfig)

@@ -1,11 +1,12 @@
-import Hero from '@/components/home/Hero'
-import FeaturedPosts from '@/components/home/FeaturedPosts'
+'use client';
+
+import ClientLayout from '@/components/ClientLayout';
+import IntroView from '@/components/views/IntroView';
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <FeaturedPosts />
-    </>
-  )
+    <ClientLayout>
+      {({ isDark }) => <IntroView isDark={isDark} />}
+    </ClientLayout>
+  );
 }

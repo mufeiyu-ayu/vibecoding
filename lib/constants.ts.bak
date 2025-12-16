@@ -1,0 +1,158 @@
+import { BlogPost, LifestyleMoment } from './types';
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'ai-future',
+    title: 'The Synthetic Horizon: Humanity\'s Role in an AI-First World',
+    category: 'Future',
+    tags: ['AI', 'Philosophy', 'Humanity'],
+    date: 'FEB 24, 2024',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop',
+    excerpt: 'We are not being replaced; we are being amplified. A deep dive into the symbiosis of biological intuition and digital intelligence.',
+    content: `
+      <p>The anxiety is palpable. It hums in the background of every developer conference, every boardroom meeting, and every quiet late-night coding session. It is the question that defines our generation: <strong>What happens to the creator when the tool begins to create?</strong></p>
+
+      <h3>The Myth of Obsolescence</h3>
+      <p>History is a graveyard of predictions about human obsolescence. The camera was supposed to kill painting. The synthesizer was supposed to kill the orchestra. The internet was supposed to kill the library. In every instance, the technology didn't subtract from human expression; it multiplied it.</p>
+
+      <p>Generative AI is not an end. It is a mirror. It reflects our collective knowledge, our biases, and our creativity back at us at light speed. When we look into the "black box" of a Large Language Model, we aren't seeing an alien intelligence. We are seeing a compressed, mathematical ghost of humanity itself.</p>
+
+      <blockquote>"The future belongs to the curious, not the knowledgeable. Knowledge is now a commodity; curiosity is the engine."</blockquote>
+
+      <h3>From Architects to Conductors</h3>
+      <p>For decades, software engineering was about laying bricks. We memorized syntax, we fought with semicolons, we built logic gates. We were the architects and the construction workers combined.</p>
+
+      <p>In the AI era, we are becoming conductors. The orchestra (the AI) creates the sound, but the conductor (the human) holds the vision. The skill set is shifting from <em>syntax</em> to <em>semantics</em>, from <em>implementation</em> to <em>intent</em>. The ability to ask the right question is becoming more valuable than the ability to provide the right answer.</p>
+
+      <h3>The Vibe Shift</h3>
+      <p>We are entering an era of "Vibe Coding." Where software is less about rigid engineering and more about guiding a stochastic process towards a feeling, an aesthetic, a user experience. The barrier to entry for creation is collapsing, which means the ceiling for quality is skyrocketing.</p>
+
+      <p>If everyone can generate code, then code itself is no longer the differentiator. <strong>Taste is.</strong> Empathy is. The ability to understand the subtle, unspoken needs of another human being is something that no transformer model, no matter how many parameters it has, can truly replicate.</p>
+
+      <h3>Conclusion</h3>
+      <p>So, do not fear the synthetic horizon. Run towards it. The AI is the engine, but you are still the driver. The destination is entirely up to you.</p>
+    `
+  },
+  {
+    id: '1',
+    title: 'Silence in the Architecture',
+    category: 'Design',
+    tags: ['Work', 'Minimalism'],
+    date: 'OCT 12, 2023',
+    image: 'https://picsum.photos/600/800?random=1',
+    excerpt: 'Exploring the profound impact of negative space in modern brutalist structures.',
+    content: `<p>Minimalism is not just about having less; it's about making room for more of what matters. In digital architecture, silence—or negative space—is the loudest element you can use.</p><p>When we strip away the noise, we force the user to focus. We create a hierarchy of attention that feels natural, almost biological.</p>`
+  },
+  {
+    id: '2',
+    title: 'The Analog Renaissance',
+    category: 'Culture',
+    tags: ['Life', 'Retro'],
+    date: 'SEP 28, 2023',
+    image: 'https://picsum.photos/600/800?random=2',
+    excerpt: 'Why grain, noise, and imperfection are making a definitive return to digital interfaces.',
+    content: `<p>In a world of 4K retina screens and perfect vector graphics, the human eye craves texture. It craves the imperfect. This is why grain overlays, dithering effects, and brutalist typography are making a comeback.</p>`
+  },
+  {
+    id: '3',
+    title: 'Ephemeral User Interfaces',
+    category: 'Technology',
+    tags: ['Work', 'Dev', 'React'],
+    date: 'SEP 14, 2023',
+    image: 'https://picsum.photos/600/800?random=3',
+    excerpt: 'Designing digital experiences that are meant to disappear, leaving only a memory.',
+    content: `<p>The best interface is no interface. As we move towards spatial computing and AI-driven inputs, the screen itself becomes a barrier. We are designing for moments, not for sessions.</p>`
+  },
+  {
+    id: '4',
+    title: 'Typography as Voice',
+    category: 'Typography',
+    tags: ['Work', 'Design'],
+    date: 'AUG 30, 2023',
+    image: 'https://picsum.photos/600/800?random=4',
+    excerpt: 'How variable fonts are changing the way we perceive emotional tone in reading.',
+    content: `<p>Type is the clothes words wear. With the advent of variable fonts, we can now animate the weight, slant, and width of text in real-time, giving written language a body language of its own.</p>`
+  },
+  {
+    id: '5',
+    title: 'Midnight in Tokyo',
+    category: 'Travel',
+    tags: ['Life', 'Photography'],
+    date: 'AUG 12, 2023',
+    image: 'https://picsum.photos/600/800?random=5',
+    excerpt: 'A photographic journey through the neon-soaked backstreets of Shinjuku.',
+    content: `<p>The city breathes differently at night. The neon lights of Shinjuku aren't just illumination; they are a mood. A cybernetic dreamscape that exists between the analog past and the digital future.</p>`
+  }
+];
+
+export const LIFE_MOMENTS: LifestyleMoment[] = [
+  {
+    id: 'm1',
+    type: 'image',
+    content: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=800',
+    caption: 'New mechanical switch day. The thock is real. ⌨️',
+    location: 'Home Studio',
+    date: 'Today',
+    tags: ['Setup', 'Geek'],
+    color: '#8B5CF6'
+  },
+  {
+    id: 'm2',
+    type: 'checkin',
+    content: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800',
+    caption: 'Caffeine loading. 4th cup. Send help.',
+    location: 'Blue Bottle Coffee',
+    date: 'Yesterday',
+    tags: ['Coffee', 'Vibe'],
+    color: '#EC4899'
+  },
+  {
+    id: 'm3',
+    type: 'image',
+    content: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
+    caption: 'AFK. Touching grass (and controllers). 🎮',
+    location: 'Living Room',
+    date: 'Sat Night',
+    tags: ['Gaming', 'PS5'],
+    color: '#3B82F6'
+  },
+  {
+    id: 'm4',
+    type: 'thought',
+    content: 'Why does code always break exactly when you order food? It\'s a universal law.',
+    caption: 'Late night thoughts',
+    date: '2:00 AM',
+    tags: ['Rant', 'DevLife'],
+    color: '#ad3e2f'
+  },
+  {
+    id: 'm5',
+    type: 'image',
+    content: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800',
+    caption: 'Captured this ghost on film. 📸',
+    location: 'Shibuya Crossing',
+    date: 'Last Month',
+    tags: ['Photography', 'Travel'],
+    color: '#F59E0B'
+  },
+  {
+    id: 'm6',
+    type: 'music',
+    content: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=800',
+    caption: 'On repeat: Daft Punk - Random Access Memories.',
+    location: 'Spotify',
+    date: 'Now',
+    tags: ['Music', 'Vibe'],
+    color: '#10B981'
+  },
+  {
+    id: 'm7',
+    type: 'image',
+    content: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&q=80&w=800',
+    caption: 'Workflow optimization or just procrastination? Yes.',
+    location: 'Desk',
+    date: 'Mon Morning',
+    tags: ['MacBook', 'Clean'],
+    color: '#6366F1'
+  }
+];
